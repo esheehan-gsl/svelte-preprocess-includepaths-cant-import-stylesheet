@@ -6,7 +6,8 @@
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
-    "prepare": "svelte-kit sync"
+    "prepare": "svelte-kit sync",
+    "sass": "sass --load-path=node_modules/@uswds/uswds/packages src/styles.scss build/styles.css"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
