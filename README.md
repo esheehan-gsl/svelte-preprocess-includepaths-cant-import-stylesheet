@@ -1,38 +1,8 @@
-# create-svelte
+# svelte-preprocess-includepaths-cant-import-stylesheet
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This repo reproduces a bug using USWDS 3.0 with SvelteKit and svelte-preprocess
+4.10.
 
-## Creating a project
+The styles in `src/styles.scss` and `src/_uswds-theme.scss` follow the recommendations for [configuring USWDS](https://designsystem.digital.gov/documentation/settings/). The root stylesheet (`styles.scss`) is imported into `index.svelte` to trigger processing of the styles by svelte-preprocessor, which is configured in `svelte.config.js` to add `node_modules/@uswds/uswds/packages` to the include paths.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+For comparison, you can run `npm run sass` to call Sass directly and compile `src/styles.scss` to `build/styles.css` and see that providing that same include path directly to Sass via the `--load-path` argument works.
